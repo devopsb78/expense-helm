@@ -4,6 +4,6 @@ component: backend
 appVersion: 2.0.1
 
 service:
-  type: ClusterIp
+  type: ClusterIP
   port: 80
   targetPort: 8080
