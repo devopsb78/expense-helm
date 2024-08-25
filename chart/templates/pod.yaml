@@ -42,7 +42,7 @@ spec:
       image: 368761340104.dkr.ecr.us-east-1.amazonaws.com/{{ .Chart.Name }}-{{ .Values.component }}:{{ .Values.appVersion }}
       imagePullPolicy: Always
 {{ if .Values.initContainers.enabled }}
-    volumeMounts:
-      - name: vault
-        mountPath: /data
+      volumeMounts:
+        - name: vault
+          mountPath: /data
 {{ end }}
