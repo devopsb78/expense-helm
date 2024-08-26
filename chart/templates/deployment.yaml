@@ -29,6 +29,8 @@ spec:
         env:
           - name: VAULT_ADDR
             value: "https://vault-internal.ramdevops78.online:8200"
+          - name: VAULT_SKIP_VERIFY
+            value: "TRUE"
           - name: VAULT_TOKEN
             valueFrom:
               secretKeyRef:
@@ -36,8 +38,6 @@ spec:
                 key: token
           - name: SECRET_NAME
             value: {{ .Chart.Name }}-dev/{{ .Values.component }}
-          - name: VAULT_SKIP_VERIFY
-          value: "TRUE"
         volumeMounts:
           - name: vault
             mountPath: /data
