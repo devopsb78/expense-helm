@@ -35,7 +35,7 @@ spec:
                 name: vault-token
                 key: token
           - name: SECRET_NAME
-            value: { { .Chart.Name } }-dev/{{ .Values.component }}
+            value: {{ .Chart.Name }}-dev/{{ .Values.component }}
           - name: VAULT_SKIP_VERIFY
           value: "TRUE"
         volumeMounts:
@@ -47,13 +47,14 @@ spec:
         volumeMounts:
           - name: vault
             mountPath: /data
-    { { end } }
+    {{ end }}
     containers:
-      - name: { { .Values.component } }
+      - name: {{ .Values.component }}
         image: 368761340104.dkr.ecr.us-east-1.amazonaws.com/{{ .Chart.Name }}-{{ .Values.component }}:{{ .Values.appVersion }}
         imagePullPolicy: Always
-    { { if .Values.initContainers.enabled } }
+    {{ if .Values.initContainers.enabled }}
     volumeMounts:
       - name: vault
         mountPath: /data
-    { { end } }
+    {{ end }}
+
