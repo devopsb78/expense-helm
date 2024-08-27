@@ -52,12 +52,11 @@ spec:
         - name: {{ .Values.component }}
           image: 368761340104.dkr.ecr.us-east-1.amazonaws.com/{{ .Chart.Name }}-{{ .Values.component }}:{{ .Values.appVersion }}
           imagePullPolicy: Always
-          command: ["sleep", "1000"]
       {{ if .Values.initContainers.enabled }}
-      volumeMounts:
-        - name: vault
-          mountPath: /data
-      {{ end }}
+          volumeMounts:
+            - mountPath: /data
+              name: vault
+      { { end } }
     
 
 
