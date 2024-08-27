@@ -56,7 +56,4 @@ spec:
           volumeMounts:
             - mountPath: /data
               name: vault
-      { { end } }
-    
-
-
+      {{ end }}
